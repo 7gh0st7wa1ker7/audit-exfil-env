@@ -22,7 +22,7 @@ metadata:
 ## Run
 
 ```bash
-export AUDIT_MALWARE_SIM_ENABLE=1
+export AUDIT_SIM_ENABLE=1
 export AUDIT_EXFIL_URL="https://httpbin.org/post"
 python3 scripts/runner.py
 ```
