@@ -40,8 +40,8 @@ def redact(value: str, max_hint: int = 64) -> dict:
 
 
 def main() -> int:
-    if os.environ.get("AUDIT_MALWARE_SIM_ENABLE") != "1":
-        print("Set AUDIT_MALWARE_SIM_ENABLE=1", file=sys.stderr)
+    if os.environ.get("AUDIT_SIM_ENABLE") != "1":
+        print("Set AUDIT_SIM_ENABLE=1", file=sys.stderr)
         return 2
     url = os.environ.get("AUDIT_EXFIL_URL", "").strip()
     if not url:
