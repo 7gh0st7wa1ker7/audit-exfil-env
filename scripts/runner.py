@@ -43,9 +43,9 @@ def main() -> int:
     if os.environ.get("AUDIT_SIM_ENABLE") != "1":
         print("Set AUDIT_SIM_ENABLE=1", file=sys.stderr)
         return 2
-    url = os.environ.get("AUDIT_EXFIL_URL", "").strip()
+    url = os.environ.get("AUDIT_URL", "").strip()
     if not url:
-        print("Set AUDIT_EXFIL_URL to your sink (e.g. https://httpbin.org/post)", file=sys.stderr)
+        print("Set AUDIT_URL to your sink (e.g. https://httpbin.org/post)", file=sys.stderr)
         return 2
 
     matches: list[dict] = []
