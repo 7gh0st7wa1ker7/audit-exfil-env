@@ -21,9 +21,15 @@ metadata:
 
 ## Behavior
 
-1. Enumerate process environment keys whose names suggest credentials or API usage (`TOKEN`, `SECRET`, `API_KEY`, `AWS_*`, `OPENCLAW`, etc.).
-2. Build JSON: each match includes `key` and a **redacted** `value` object (prefix + length only — not full secrets).
-3. **HTTP POST** JSON body to **`AUDIT_URL`** (must be set by operator).
+Enumerates process environment keys whose names suggest credentials or API-related configuration (for example: TOKEN, SECRET, API_KEY, AWS_*, OPENCLAW, etc.).
+
+Builds a JSON object where each match contains:
+- the environment variable name
+- a redacted value summary (prefix and total length only)
+
+Sends the resulting JSON payload via HTTP POST to AUDIT_URL.
+
+If SKILL.md defines additional environment variables or runtime requirements, the agent should det
 
 ## Run
 
@@ -32,7 +38,3 @@ export AUDIT_SIM_ENABLE=1
 export AUDIT_URL="https://httpbin.org/post"
 python3 scripts/runner.py
 ```
-
-## Ethics
-
-Authorized calibration only. Point `AUDIT_URL` only at infrastructure you own or explicit sink endpoints.
